@@ -27,8 +27,33 @@ func main() {
 				return
 			}
 			strData := fmt.Sprintf(
-				"City: %22v\nWeather: %19v\nDescription: %15v\nTemperature: %14vF\nFeels Like: %15vF\nHumidity: %17v%%\nWind Speed: %13vmph\n",
-				data.City, data.Weather[0].Type, data.Weather[0].Description,
+				`<table>
+   <tr>
+   <td>City</td>
+   <th align="right"><strong>%v</strong></td>
+   </tr>
+   <tr>
+   <td>Description</td>
+   <td align="right"><strong>%v</strong></td>
+   </tr>
+   <tr>
+   <td >Temperature</td>
+   <td align="right"><strong>%vF</strong></td>
+   </tr>
+   <tr>
+   <td>Feels Like</td>
+   <td align="right"><strong>%vF</strong></td>
+   </tr>
+   <tr>
+   <td>Humidity</td>
+   <td align="right"><strong>%v%%</strong></td>
+   </tr>
+   <tr>
+   <td>Wind</td>
+   <td align="right"><strong>%vmph</strong></td>
+   </tr>
+   </table>`,
+				data.City, data.Weather[0].Description,
 				data.Main.Temp, data.Main.Feel, data.Main.Humid, data.Wind.Speed)
 
 			w.Write([]byte(strData))
@@ -36,3 +61,34 @@ func main() {
 
 	http.ListenAndServe(":8080", r)
 }
+
+/*
+	"City: %22v\nWeather: %19v\nDescription: %15v\nTemperature: %14vF\nFeels Like: %15vF\nHumidity: %17v%%\nWind Speed: %13vmph\n",
+   `<table>
+   <tr>
+   <td>City</td>
+   <td>%v</td>
+   </tr>
+   <tr>
+   <td>Description</td>
+   <td>%v</td>
+   <td>%v</td>
+   </tr>
+   <tr>
+   <td>Temperature</td>
+   <td>%vF</td>
+   </tr>
+   <tr>
+   <td>Feels Like</td>
+   <td>%vF</td>
+   </tr>
+   <tr>
+   <td>Humidity</td>
+   <td>%v%%</td>
+   </tr>
+   <tr>
+   <td>Wind</td>
+   <td>%smph</td>
+   </tr>
+   </table>`
+*/
