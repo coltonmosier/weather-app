@@ -1,7 +1,7 @@
 # weather-app
 * Website that calls a weather API from [OpenWeatherMap](https://home.openweathermap.org/) to display the current weather for a city.
 * I used Golang to learn more about handling requests to and from an API.
-* Also wanted to begin learning how to host a web server and push data to it.
+* Also wanted to learn how to host a web server and push data to it.
 # usage
 1. Get the application:  
 `git clone https://github.com/coltonmosier/weather-app`
