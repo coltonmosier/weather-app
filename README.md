@@ -8,6 +8,8 @@
 
 2. Create a free account on [OpenWeatherMap](https://home.openweathermap.org/), which will email you your free ApiKey
 3. Add your ApiKey to the .apiConfig file within weather-app/
-4. Run application  
-`go run weather-app/cmd/weather/*.go`
+4. Build and run application  
+`cd weather-app/`  
+`go build -o weather ./cmd/weather/`  
+`./weather`
 5. Visit 'localhost:8080' and follow instructions.
