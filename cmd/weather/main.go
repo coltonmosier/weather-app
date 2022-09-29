@@ -27,7 +27,7 @@ func main() {
 				return
 			}
 			strData := fmt.Sprintf(
-				"City: %22v\nWeather: %19v\nDescription: %15v\nTemperature: %15v\nFeels Like: %16v\nHumidity: %18v\nWind Speed: %16v\n",
+				"City: %22v\nWeather: %19v\nDescription: %15v\nTemperature: %14vF\nFeels Like: %15vF\nHumidity: %17v%%\nWind Speed: %13vmph\n",
 				data.City, data.Weather[0].Type, data.Weather[0].Description,
 				data.Main.Temp, data.Main.Feel, data.Main.Humid, data.Wind.Speed)
 
