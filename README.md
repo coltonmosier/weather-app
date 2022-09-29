@@ -13,3 +13,7 @@
 `go build -o weather ./cmd/weather/`  
 `./weather`
 5. Visit 'localhost:8080' and follow instructions.
+
+# POC
+![index](https://user-images.githubusercontent.com/48069930/192920817-acd14b45-ce79-4fe4-b5a2-50439e23c912.png)
+![weather](https://user-images.githubusercontent.com/48069930/192920853-ef5ba9ff-3e48-48e9-913e-fbc7ca59477a.png)
