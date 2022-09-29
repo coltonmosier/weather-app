@@ -1,39 +1,48 @@
-package handlers
+package main
 
 import (
 	"encoding/json"
 	"errors"
-	"fmt"
 	"net/http"
 	"os"
 )
 
 type WeatherData struct {
-	City    string `json:"city"`
-	Weather string `json:"weather"`
+	City    string `json:"name"`
+	Weather []struct{
+		Type string `json:"main"`
+		Description string `json:"description"`
+	} `json:"weather"`
+	Main struct{
+		Temp float64 `json:"temp"`
+		Feel float64 `json:"feels_like"`
+		Humid int `json:"humidity"`
+	}`json:"main"`
+	Wind struct {
+		Speed float64 `json:"speed"`
+	}
 }
 
 // ApiConfig is a struct to store the key from the .apiConfig file
-type ApiConfig struct {
+type apiConfig struct {
 	OpenWeatherMapApiKey string `json:"OpenWeatherMapApiKey"`
 }
 
 // ApiSetUp reads from .apiConfig file to grab and store the Api Key into
 // ApiConfig struct.
-func ApiSetUp(fileName string) (ApiConfig, error) {
-	var setUpApi ApiConfig
-	fmt.Println("api config")
+func ApiSetUp(fileName string) (apiConfig, error) {
+	var setUpApi apiConfig
 	bytes, err := os.ReadFile(fileName)
 	if err != nil {
-		return ApiConfig{}, errors.New("Could not read .apiConfig file")
+		return apiConfig{}, errors.New("could not read .apiConfig file")
 	}
 	if len(bytes) == 0 {
-		return ApiConfig{}, errors.New("No key loaded")
+		return apiConfig{}, errors.New("no key loaded")
 	}
 
 	err = json.Unmarshal(bytes, &setUpApi)
 	if err != nil {
-		return ApiConfig{}, errors.New("Could not get json from .apiConfig file")
+		return apiConfig{}, errors.New("could not get json from .apiConfig file")
 	}
 
 	return setUpApi, nil
@@ -51,6 +60,9 @@ func QueryApi(city string) (WeatherData, error) {
 		return WeatherData{}, err
 	}
 
+/*
+https://api.openweathermap.org/data/2.5/weather?q=sanantonio&appid=fa0c34b5d7989cf31f9e4a3005eec24a&units=imperial
+*/
 	url := "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKey.OpenWeatherMapApiKey + "&units=imperial"
 
 	res, err := http.Get(url)
