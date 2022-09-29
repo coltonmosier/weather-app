@@ -6,6 +6,7 @@ import (
 	"strings"
 )
 
+// index handles requests to root directory of web server
 func index(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte("Hello!\nGo to 'localhost:8080/weather/<city name>' to see current weather in that city.\n"))
 }
@@ -16,6 +17,7 @@ func main() {
 
 	r.HandleFunc("/", index)
 
+	// anon func writes the data for the city that is requested to it.
 	r.HandleFunc("/weather/",
 		func(w http.ResponseWriter, r *http.Request) {
 			location := strings.SplitN(r.URL.Path, "/", 3)[2]
@@ -25,10 +27,10 @@ func main() {
 				return
 			}
 			strData := fmt.Sprintf(
-				"City: %22v\nWeather: %19v\nDescription: %15v\nTemperature: %15v\nFeels Like: %16v\nHumidity: %18v\nWind Speed: %16v\n", 
-				data.City, data.Weather[0].Type, data.Weather[0].Description, 
+				"City: %22v\nWeather: %19v\nDescription: %15v\nTemperature: %15v\nFeels Like: %16v\nHumidity: %18v\nWind Speed: %16v\n",
+				data.City, data.Weather[0].Type, data.Weather[0].Description,
 				data.Main.Temp, data.Main.Feel, data.Main.Humid, data.Wind.Speed)
-			
+
 			w.Write([]byte(strData))
 		})
 

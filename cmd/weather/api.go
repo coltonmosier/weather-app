@@ -7,17 +7,18 @@ import (
 	"os"
 )
 
+// WeatherData stores the json that is received from the API request
 type WeatherData struct {
 	City    string `json:"name"`
-	Weather []struct{
-		Type string `json:"main"`
+	Weather []struct {
+		Type        string `json:"main"`
 		Description string `json:"description"`
 	} `json:"weather"`
-	Main struct{
-		Temp float64 `json:"temp"`
-		Feel float64 `json:"feels_like"`
-		Humid int `json:"humidity"`
-	}`json:"main"`
+	Main struct {
+		Temp  float64 `json:"temp"`
+		Feel  float64 `json:"feels_like"`
+		Humid int     `json:"humidity"`
+	} `json:"main"`
 	Wind struct {
 		Speed float64 `json:"speed"`
 	}
@@ -60,9 +61,6 @@ func QueryApi(city string) (WeatherData, error) {
 		return WeatherData{}, err
 	}
 
-/*
-https://api.openweathermap.org/data/2.5/weather?q=sanantonio&appid=fa0c34b5d7989cf31f9e4a3005eec24a&units=imperial
-*/
 	url := "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKey.OpenWeatherMapApiKey + "&units=imperial"
 
 	res, err := http.Get(url)
