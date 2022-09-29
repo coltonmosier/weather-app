@@ -15,3 +15,5 @@
 5. Visit 'localhost:8080' and follow instructions.
 
 # proof of concept
+![index](https://user-images.githubusercontent.com/48069930/192921740-2ada7582-2d1c-4af5-999e-f70a5dec5551.png)
+![weather](https://user-images.githubusercontent.com/48069930/192921743-6cf960c8-7581-4dcd-99c5-74e516f4421f.png)
