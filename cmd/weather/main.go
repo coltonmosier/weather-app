@@ -61,34 +61,3 @@ func main() {
 
 	http.ListenAndServe(":8080", r)
 }
-
-/*
-	"City: %22v\nWeather: %19v\nDescription: %15v\nTemperature: %14vF\nFeels Like: %15vF\nHumidity: %17v%%\nWind Speed: %13vmph\n",
-   `<table>
-   <tr>
-   <td>City</td>
-   <td>%v</td>
-   </tr>
-   <tr>
-   <td>Description</td>
-   <td>%v</td>
-   <td>%v</td>
-   </tr>
-   <tr>
-   <td>Temperature</td>
-   <td>%vF</td>
-   </tr>
-   <tr>
-   <td>Feels Like</td>
-   <td>%vF</td>
-   </tr>
-   <tr>
-   <td>Humidity</td>
-   <td>%v%%</td>
-   </tr>
-   <tr>
-   <td>Wind</td>
-   <td>%smph</td>
-   </tr>
-   </table>`
-*/
